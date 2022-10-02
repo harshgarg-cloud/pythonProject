@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stripe application</title>
+</head>
+<body>
+<h1>Stripe Application</h1>
+<h3>Current plan details</h3>
+  <table>
+    <tr>
+       <th> Active </th>
+       <td> {{ status }} </td>
+    </tr>
+    <tr>
+       <th> SubscriptionId </th>
+       <td> {{ subid }} </td>
+    </tr>
+
+    <tr>
+       <th> PriceId </th>
+       <td> {{ priceid }} </td>
+    </tr>
+ </table>
+<form action="/cancel_subscription" method="GET">
+<!--      <input type="hidden" id="subscription-id" name="subscription-id" value={{ result }} />-->
+      <button id="checkout-and-portal-button" type="submit">Cancel subscription</button>
+    </form>
+  {% if login %}
+    You are logged in as <strong>{{ session['username'] }}</strong> <br />
+    <a href={{ url_for('logout') }}>logout</a>
+    {%endif %}
+</body>
+</html>

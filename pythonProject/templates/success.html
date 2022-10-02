@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thanks for your order!</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="client.js" defer></script>
+</head>
+<body>
+  <section>
+    <div class="product Box-root">
+        <h1>Stripe Application</h1>
+      <div class="description Box-root">
+        <h3>Subscription to Starter plan successful!</h3>
+      </div>
+    </div>
+    <form action="/create-portal-session" method="POST">
+      <input type="hidden" id="session-id" name="session_id" value={{ session_id }} />
+      <button id="checkout-and-portal-button" type="submit">Go to selected plan screen</button>
+    </form>
+  </section>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Subscribe to a cool new product</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+
+  <body>
+  <h1>Plan Selection Screen</h1>
+    <section>
+        {% if valid_sub %}
+        <form action="/subscription" method="GET">
+        <button id="checkout-and-portal-button" type="submit">Get Current Subscription</button>
+    </form>
+        {%else%}
+<stripe-pricing-table pricing-table-id="prctbl_1Lo4lpSDCt1OREgPTda69t06"
+publishable-key="pk_test_51LnnRESDCt1OREgPjQePPb7ujrM2jTbkRnRjsm9oRfYHNBf3q9VgP4AdLEjMw8lBEVxkQZ6fusytvC4CY5dB8QWN00YOWsR8ld">
+</stripe-pricing-table>
+        {%endif %}
+      {% if login %}
+    You are logged in as <strong>{{ session['username'] }}</strong> <br />
+    <a href={{ url_for('logout') }}>logout</a>
+    {%else%}
+    Please login here {{ session['username'] }} <br />
+    <a href={{ url_for('login') }}>login</a>
+    {%endif %}
+<!--      <form action="/create-checkout-session" method="POST">-->
+<!--        &lt;!&ndash; Add a hidden field with the lookup_key of your Price &ndash;&gt;-->
+<!--        <input type="hidden" name="lookup_key" value="qwerty" />-->
+<!--        <button id="checkout-and-portal-button" type="submit">Checkout</button>-->
+<!--      </form>-->
+    </section>
+  </body>
+</html>
